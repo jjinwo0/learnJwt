@@ -1,7 +1,6 @@
 package hello.jwt.controller;
 
-import hello.jwt.dto.MemberDto;
-import hello.jwt.entity.Member;
+import hello.jwt.domain.dto.LoginRequest;
 import hello.jwt.repository.MemberRepository;
 import hello.jwt.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -10,8 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,7 +19,7 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(){
-        return ResponseEntity.ok().body(memberService.login("", ""));
+    public ResponseEntity<String> login(@RequestBody LoginRequest dto){
+        return ResponseEntity.ok().body(memberService.login(dto.getUsername(), "");
     }
 }
